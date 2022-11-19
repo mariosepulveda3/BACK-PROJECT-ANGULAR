@@ -55,9 +55,9 @@ server.use('*', (req, res) => {
     return res.status(error.status).json(error.message);
 });
 
-// server.use((error, req, res, next) => {
-//     return res.status(error.status || 500).json(error.message || "Unexpected error");
-// });
+server.use((error, req, res, next) => {
+    return res.status(error.status || 500).json(error.message || "Unexpected error");
+});
 
 // Arrancamos el servidor
 server.listen(PORT, () => {

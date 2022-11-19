@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Book = require("../../api/books/books.model");
 const Movie = require("../../api/movies/movies.model");
 const DB_URL = process.env.DB_URL;
 
@@ -90,24 +91,24 @@ const books = [
 ];
 
 mongoose
-  .connect(DB_URL)
+  .connect(process.env.DB_URL)
   .then(async () => {
-    const allMovies = await Movie.find().lean();
+    const allBooks = await Book.find().lean();
 
-    if (!allMovies.length) {
-      console.log("[seed]: No movies found");
+    if (!allBooks.length) {
+      console.log("[seed]: No books found");
     } else {
-      console.log(`[seed]: Found ${allMovies.length} movies`);
-      await Movie.collection.drop();
-      console.log("[seed]: Movie deleted correctly");
+      console.log(`[seed]: Found ${allBooks.length} books`);
+      await Book.collection.drop();
+      console.log("[seed]: Book deleted correctly");
     }
   })
   .catch((error) =>
-    console.log("[seed]: Error finding movie: ", error)
+    console.log("[seed]: Error finding book: ", error)
   )
   .then(async () => {
-    await Movie.insertMany(movies);
-    console.log("[seed]: New movies added");
+    await Book.insertMany(movies);
+    console.log("[seed]: New books added");
   })
-  .catch((error) => console.log("[seed]: Error adding movie", error))
+  .catch((error) => console.log("[seed]: Error adding book", error))
   .finally(() => mongoose.disconnect());
