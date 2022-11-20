@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema (
     {
-        title: { type: String, required: true },
-        img: { type: String, required: true, default: "https://freepngimg.com/thumb/book/37234-9-book-clipart.png"},
-        author: { type: String , required: true },
-        synopsis: { type: String , required: true },
+        title: { type: String },
+        img: { type: String, default: "https://freepngimg.com/thumb/book/37234-9-book-clipart.png"},
+        author: { type: String },
+        synopsis: { type: String },
         numberPages: { type: String },
         editorial: { type: String },
         datePublication: { type: Date },

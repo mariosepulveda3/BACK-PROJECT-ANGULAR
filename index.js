@@ -8,20 +8,16 @@ const userRoutes = require('./src/api/users/users.routes');
 const cors = require('cors');
 const User = require('./src/api/users/users.model');
 
-// Requerimos cloudinary
 const cloudinary = require('cloudinary').v2;
 
-// Conectamos con la base de datos
 db.connectDb();
 
-// Conectamos con cloudinary 2.0
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
     api_secret : process.env.API_SECRET
 })
 
-// Creamos el servidor
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
@@ -40,11 +36,10 @@ server.use(cors({
     credentials: true
 }));
 
-// Hacemos que nos funcione req.body
+// req.body
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
-// Indicamos las rutas
 server.use('/', indexRoutes);
 server.use('/books', bookRoutes);
 server.use('/users', userRoutes);
@@ -59,7 +54,6 @@ server.use((error, req, res, next) => {
     return res.status(error.status || 500).json(error.message || "Unexpected error");
 });
 
-// Arrancamos el servidor
 server.listen(PORT, () => {
     console.log('Server running correctly');
 });

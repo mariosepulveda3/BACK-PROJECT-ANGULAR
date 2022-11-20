@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Book = require("../../api/books/books.model");
-const Movie = require("../../api/movies/movies.model");
 const DB_URL = process.env.DB_URL;
+const { connectDb } = require('../database/db') 
 
 const books = [
 
@@ -26,72 +26,68 @@ const books = [
     sales: "",
   },
   {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
+  // },
+  // {
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
+  // },
+  // {
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
+  // },
+  // {
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
+  // },
+  // {
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
+  // },
+  // {
+  //   title: "",
+  //   img: "",
+  //   author: "",
+  //   synopsis: "",
+  //   numberPages: "",
+  //   editorial: "",
+  //   datePublication: "",
+  //   sales: "",
   },
-  {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
-  },
-  {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
-  },
-  {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
-  },
-  {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
-  },
-  {
-    title: "",
-    img: "",
-    author: "",
-    synopsis: "",
-    numberPages: "",
-    editorial: "",
-    datePublication: "",
-    sales: "",
-  },
-
-
-
 ];
 
-mongoose
-  .connect(process.env.DB_URL)
+connectDb()
   .then(async () => {
     const allBooks = await Book.find().lean();
 
@@ -107,7 +103,7 @@ mongoose
     console.log("[seed]: Error finding book: ", error)
   )
   .then(async () => {
-    await Book.insertMany(movies);
+    await Book.insertMany(books);
     console.log("[seed]: New books added");
   })
   .catch((error) => console.log("[seed]: Error adding book", error))

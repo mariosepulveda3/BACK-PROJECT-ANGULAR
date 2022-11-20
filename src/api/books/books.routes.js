@@ -42,7 +42,7 @@ router.post("/create", [isAdmin], upload.single("img"), async (req, res) => {
     if (req.file) {
       book.img = req.file.path;
     }
-    const newBook = new Book(movie);
+    const newBook = new Book(book);
     const created = await newBook.save();
     return res.status(201).json(created);
   } catch (error) {
@@ -72,7 +72,7 @@ router.put("/edit/:id", [isAdmin], upload.single("img"), async (req, res) => {
 router.delete("/delete/:id", [isAdmin], async (req, res) => {
   try {
     const id = req.params.id;
-    const bookToDelete = await Movie.findByIdAndDelete(id);
+    const bookToDelete = await Book.findByIdAndDelete(id);
     return res
       .status(200)
       .json("Book deleted correctly");
