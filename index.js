@@ -36,7 +36,6 @@ server.use(cors({
     credentials: true
 }));
 
-// req.body
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 

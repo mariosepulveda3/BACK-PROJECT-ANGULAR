@@ -35,8 +35,7 @@ router.get("/title/:title", async (req, res) => {
   }
 });
 
-// metemos dentro de upload.single, el campo model en la que va la imagen
-router.post("/create", [isAdmin], upload.single("img"), async (req, res) => {
+router.post("/create", /*[isAdmin],*/ upload.single("img"), async (req, res) => {
   try {
     const book = req.body;
     if (req.file) {
@@ -50,7 +49,7 @@ router.post("/create", [isAdmin], upload.single("img"), async (req, res) => {
   }
 });
 
-router.put("/edit/:id", [isAdmin], upload.single("img"), async (req, res) => {
+router.put("/edit/:id", /*[isAdmin],*/ upload.single("img"), async (req, res) => {
   try {
     const id = req.params.id;
     const book = req.body;
@@ -69,7 +68,7 @@ router.put("/edit/:id", [isAdmin], upload.single("img"), async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", [isAdmin], async (req, res) => {
+router.delete("/delete/:id", /*[isAdmin],*/ async (req, res) => {
   try {
     const id = req.params.id;
     const bookToDelete = await Book.findByIdAndDelete(id);

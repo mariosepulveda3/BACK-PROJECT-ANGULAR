@@ -8,10 +8,7 @@ const bookSchema = new Schema (
         img: { type: String, default: "https://freepngimg.com/thumb/book/37234-9-book-clipart.png"},
         author: { type: String },
         synopsis: { type: String },
-        numberPages: { type: String },
-        editorial: { type: String },
-        datePublication: { type: Date },
-        sales: { type: Number },
+        datePublicated: { type: Date },
     },
     {
         timestamps: true
