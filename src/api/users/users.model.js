@@ -13,7 +13,7 @@ const userSchema = new Schema(
     lastName: { type: String , trim: true},
     // city: { type: String , trim: true},
     // country: { type: String , trim: true},
-    // rol: { type: String, default: "user"},
+    rol: { type: String, default: "user"},
   },
   {
     timestamps: true,
