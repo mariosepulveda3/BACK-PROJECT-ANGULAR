@@ -68,7 +68,7 @@ router.delete("/delete/:name", [isAdmin], async (req, res) => {
   }
 });
 
-router.get('/checkSession', [isAuth],  async (req, res) => {
+router.post('/checkSession', [isAuth],  async (req, res) => {
   try {
     const user = req.user;
     return res.status(200).json(user)
